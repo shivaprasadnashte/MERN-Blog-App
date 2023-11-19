@@ -5,7 +5,7 @@ function Hero() {
         <>
             <div className=' w-full  h-80 relative flex justify-center items-center bg-yellow-200'>
 
-                <img src="/public/images/hero.jpg" alt=".." className=' w-full h-80' />
+                <img src="/public/images/jjr.jpeg" alt=".." className=' w-full h-80' />
                 <div className=' absolute gap-3 text-white flex flex-col justify-center items-center'>
                     <p className=' text-5xl font-bold'>BLOG</p>
                     <p className=' animate-bounce'>Express Your Thoughts !</p>

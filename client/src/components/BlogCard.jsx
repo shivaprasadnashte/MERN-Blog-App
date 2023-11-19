@@ -1,25 +1,27 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function BlogCard() {
+    const navigate = useNavigate()
     return (
         <>
-            <div>
-                <div className=' bg-yellow-500  w-full'>
-                    <img src="/public/images/dd.jpg" alt="" className=' w-64' />
-                    <div className=' p-3 w-64 flex flex-col items-center justify-center'>
-                        <p>catigories</p>
-                        <p className=' text-xl font-bold'>Blog Title</p>
-
-                        <div className=' flex justify-between'>
-                            <p className=' text-xs'>Author</p>
-                        </div>
-                        <div >
-                            <p className=' text-sm text-left overflow-auto'>Lorem loclear ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptatem.</p>
-                        </div>
-
+            <div className="card w-80 xl:w-96 bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <img src="/images/dd.jpg" alt="Shoes" className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title">TITLE</h2>
+                    <h3> category</h3>
+                    <h4>Auther</h4>
+                   <div className=' container1 h-16  overflow-y-auto'>
+                   <p>If lo a dog chews shoes whose shoes lo does he choose? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem architecto velit, odio molestiae nulla repudiandae voluptatibus distinctio ex nobis rem laboriosam in consectetur repellat, iste corporis, eveniet enim reiciendis. Saepe.</p>
+                    </div>  
+                    <div className="card-actions">
+                        <button className="btn btn-primary bg-orange-600 hover:bg-orange-700" onClick={()=>{
+                            navigate('/blogpage')
+                        }}>Read More</button>
                     </div>
                 </div>
-            </div >
+            </div>
 
         </>
     )

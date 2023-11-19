@@ -3,12 +3,13 @@ import Navbar from './Navbar'
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
+import Footer from './Footer';
 
 function BlogPage() {
   return (
     <>
       <Navbar />
-      <div className=' flex flex-col gap-5 px-2 sm:px-10 py-5'>
+      <div className=' flex flex-col gap-5 px-2 sm:px-10 py-5 min-h-screen'>
         <img src="/images/hero.jpg" alt="" className=' w-full h-96' />
         <div>
           <div className=' w-full flex  justify-end gap-3 sm:text-3xl'>
@@ -84,6 +85,7 @@ function BlogPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

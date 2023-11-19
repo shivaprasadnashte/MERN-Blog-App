@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Hero from './Hero'
-
+import Footer from './Footer'
 function CreatBlog() {
     return (
         <>
@@ -27,7 +27,7 @@ function CreatBlog() {
                     <button className=' bg-blue-600 text-white  w-24 py-1 px-2'>PUBLISH</button>
                 </div>
             </div>
-
+<Footer />
 
 
         </>

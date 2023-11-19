@@ -7,7 +7,7 @@ function Catigori() {
         <>
             <div className=' lg:w-1/4 w-full flex flex-col gap-5'>
               <div className=' w-full flex justify-center'>
-              <button className=' bg-blue-500  w-32 text-sm text-white py-2 px-3 sm:w-full'
+              <button className=' bg-blue-500  w-32 text-sm text-white py-2 px-3 md:w-full'
                     onClick={() => {
                         navigate('/creatblog')
                     }

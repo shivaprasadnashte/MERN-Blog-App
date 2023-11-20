@@ -55,6 +55,12 @@ const blogSchema = new mongoose.Schema({
         trim: true,
         maxlength: [5000, 'Body cannot be more than 5000 characters']
     },
+    author: {
+        type: String,
+        required: [true, 'Please provide a author'],
+        trim: true,
+        maxlength: [100, 'Author cannot be more than 100 characters']
+    },
 }, { timestamps: true });
 
 const commentSchema = new mongoose.Schema({

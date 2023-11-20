@@ -1,18 +1,23 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const connectDb = require("./config/db");
-const signupApi = require("./signupApi");
-const login = require("./login");
-const blog = require("./blog");
-const app = new express();
+const signupRouter = require("./signupApi");
+const loginRouter = require("./login");
+const blogRouter = require("./blog");
+
+const cors = require("cors");
+const app = express();
+
+app.use(cors());
+app.use(express.json({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false })); 
 connectDb();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-signupApi();
-login();
-blog();
+app.use("/signup",signupRouter); 
+app.use("/login", loginRouter);
+app.use("/blog", blogRouter);
+
+
 app.listen(5000, () => {
   console.log("index.js is listning on 5000...");
 });

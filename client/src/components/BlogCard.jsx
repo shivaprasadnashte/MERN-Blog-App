@@ -1,27 +1,47 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 function BlogCard() {
+    const [blog, setBlog] = React.useState([])
+
+    React.useEffect(() => {
+        axios.get('http://localhost:5000/blog')
+            .then((res) => {
+                setBlog(res.data)
+                console.log(res.data.length)
+            })
+            .catch
+            ((err) => {
+                console.log(err)
+            })
+    }
+        , [])
+
     const navigate = useNavigate()
     return (
         <>
-            <div className="card w-80 xl:w-96 bg-base-100 shadow-xl">
-                <figure className="px-10 pt-10">
-                    <img src="/images/dd.jpg" alt="Shoes" className="rounded-xl" />
-                </figure>
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title">TITLE</h2>
-                    <h3> category</h3>
-                    <h4>Auther</h4>
-                   <div className=' container1 h-16  overflow-y-auto'>
-                   <p>If lo a dog chews shoes whose shoes lo does he choose? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem architecto velit, odio molestiae nulla repudiandae voluptatibus distinctio ex nobis rem laboriosam in consectetur repellat, iste corporis, eveniet enim reiciendis. Saepe.</p>
-                    </div>  
-                    <div className="card-actions">
-                        <button className="btn btn-primary bg-orange-600 hover:bg-orange-700" onClick={()=>{
-                            navigate('/blogpage')
-                        }}>Read More</button>
+            {blog[0] ? blog.map((item) => (
+                <div className="card w-80 xl:w-96 bg-base-100 shadow-xl" key={item._id}>
+                    <figure className="px-10 pt-10">
+                        <img src="/images/dd.jpg" alt="Shoes" className="rounded-xl" />
+                    </figure>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title">
+                            {item.title}
+                        </h2>
+                        <h3> {item.category}</h3>
+                        <h4>{item.author || "shivaprasad"}</h4>
+                        <div className=' container1 h-16  overflow-y-auto'>
+                            <p>{item.body}</p>
+                        </div>
+                        <div className="card-actions">
+                            <Link to={`/blogpage`} state={item} ><button className="btn btn-primary bg-orange-600 hover:bg-orange-700">Read More</button>
+                        </Link>
                     </div>
                 </div>
-            </div>
+            </div >)): <h1>loading</h1>
+}
 
         </>
     )

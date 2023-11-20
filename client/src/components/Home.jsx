@@ -14,9 +14,6 @@ function Home() {
                     <Catigori />
                     <div className=' gap-10  3xl:grid-cols-4 mt-4 lg:mt-0 grid place-items-center sm:grid-cols-2 lg:gap- xl:gap-20'>
                         <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
                     </div>
                 </div>
                 <Footer />

@@ -7,12 +7,24 @@ import { FaUserAlt } from "react-icons/fa";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
+import axios from 'axios';
 // import { use } from '../../../server/login';
+import { getToken } from '../session';
 
 function BlogPage() {
+  const token = getToken()
   const location = useLocation()
   const data = location.state
-  
+  const id = data._id
+  const deleteBlog = async () => {
+
+    await axios.delete(`http://localhost:5000/blog/${id}`)
+    alert('are you sure you want to delete this blog')
+    alert('Blog Deleted')
+    window.location = '/home'
+  }
+
+
   return (
     <>
       <Navbar />
@@ -20,13 +32,15 @@ function BlogPage() {
         <img src="/images/hero.jpg" alt="" className=' w-full h-96' />
         <div>
           <div className=' w-full flex  justify-end gap-3 sm:text-3xl'>
-            <div className=' border-2 border-black sm:rounded-xl p-1'>
+            {(token.userId === data.userId) && <div className=' border-2 border-black sm:rounded-xl p-1'>
               <MdEdit className=' text-blue-500' />
-            </div>
+            </div>}
 
-            <div className=' border-2 border-black sm:rounded-xl p-1'>
+            {(token.userId === data.userId) && <div className=' border-2 border-black sm:rounded-xl p-1 ' onClick={() => {
+              deleteBlog()
+            }}>
               <MdDelete className=' text-red-500' />
-            </div>
+            </div>}
           </div>
 
         </div>
@@ -49,9 +63,9 @@ function BlogPage() {
           <div className=' flex w-full'>
             <FaUserAlt className=' mr-2 text-4xl' />
             <div className=' border-2 w-full border-gray-200'>
-              <textarea 
-               className=' p-2  w-full focus:outline-none h-20'
-               placeholder='What do you think ?....'></textarea>
+              <textarea
+                className=' p-2  w-full focus:outline-none h-20'
+                placeholder='What do you think ?....'></textarea>
             </div>
             <button className=' ml-2 bg-blue-700 px-4 h-10 text-white'>Post</button>
           </div>
@@ -70,7 +84,7 @@ function BlogPage() {
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis maiores ratione plac</p>
           </div>
         </div>
-       
+
 
         <div className=' flex flex-col bg-gray-200 w-full py-1 gap-1 px-3'>
           <div className=' flex justify-between '>

@@ -1,9 +1,7 @@
 const express = require("express");
 const signupSchema = require("./module/module");
 const loginRouter = express.Router();
-
 const bodyParser = require("body-parser");
-
 loginRouter.route("/").post(async (req, res) => {
   const response = await req.body;
   console.log(response)
@@ -20,7 +18,7 @@ loginRouter.route("/").post(async (req, res) => {
       if (user.password !== userin.password) {
         return res.status(501).json({ message: "Incorrect password" });
       }
-      return res.status(200).json({ message: "login successful" });
+      return res.status(200).json({name:user.name,username:user.username, userId:user._id});
     }
   );
 });

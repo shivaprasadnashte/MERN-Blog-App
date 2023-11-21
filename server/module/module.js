@@ -25,12 +25,12 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const blogSchema = new mongoose.Schema({
-    // userId: {
-    //     type: String,
-    //     required: [true, 'Please provide a userId'],
-    //     trim: true,
-    //     maxlength: [100, 'userId cannot be more than 100 characters']
-    // },
+    userId: {
+        type: String,
+        required: [true, 'Please provide a userId'],
+        trim: true,
+        // maxlength: [100, 'userId cannot be more than 100 characters']
+    },
     // username: {
     //     type: String,
     //     required: [true, 'Please provide a username'],
@@ -57,7 +57,7 @@ const blogSchema = new mongoose.Schema({
     },
     author: {
         type: String,
-        required: [true, 'Please provide a author'],
+        // required: [true, 'Please provide a author'],
         trim: true,
         maxlength: [100, 'Author cannot be more than 100 characters']
     },

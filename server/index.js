@@ -16,7 +16,7 @@ connectDb();
 app.use("/signup",signupRouter); 
 app.use("/login", loginRouter);
 app.use("/blog", blogRouter);
-
+app.use("/:id", blogRouter);
 
 app.listen(5000, () => {
   console.log("index.js is listning on 5000...");

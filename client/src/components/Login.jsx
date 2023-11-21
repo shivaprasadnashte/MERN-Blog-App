@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { setToken } from '../session'
+// import { set } from 'mongoose'
 
 function Login() {
     const navigate = useNavigate()
@@ -11,10 +13,13 @@ function Login() {
         const data = { username, password }
         await axios.post('http://localhost:5000/login', data)
            .then( async(res) => {
+            setToken(res.data)
+            // console.log(res.data)
             setUsername(''),
-            setPassward(''),
+            setPassward('')
             navigate('/home')
-    })
+            // console.log(res.data)
+           }) 
     }
   
     return (

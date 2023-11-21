@@ -3,16 +3,20 @@ import Navbar from './Navbar'
 import Hero from './Hero'
 import Footer from './Footer'
 import axios from 'axios'
+import { getToken } from '../session'
 function CreatBlog() {
-
+    
+ const   authorName  = getToken()
+ const author = authorName.username
+ const userId = authorName.userId
     const [title, setTitle] = React.useState('')
     const [category, setCategory] = React.useState('')
     const [body, setBody] = React.useState('')
-    const [author, setAuthor] = React.useState('')
+    // const [author, setAuthor] = React.useState()
 
     const handleSubmit = async (e) => {
-       
-        const blog = { title, category, body, author }
+        
+        const blog = { title, category, body, author, userId }
        await  axios.post('http://localhost:5000/blog', blog)
       .then(
             console.log('new blog added'),
@@ -52,16 +56,7 @@ function CreatBlog() {
 
                         </div>
 
-                        <div className=' w-full border-b-2 border-gray-400'>
-                            <input type="text"
-                                placeholder='Author'
-                                className=' w-full focus:outline-none p-1  font-bold  text-xl'
-                                onChange={(e) => {
-                                    setAuthor(e.target.value)
-                                }}
-                                value={author} />
-
-                        </div>
+                       
                     </div>
                     <div className=' border-2 border-gray-400'>
                         <textarea name="" id="" cols="30" rows="10"

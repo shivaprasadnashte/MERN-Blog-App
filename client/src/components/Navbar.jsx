@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { removeToken } from '../session'
 
 function Navbar() {
     const navigate = useNavigate()
@@ -24,6 +25,7 @@ function Navbar() {
                         CONTACT
                     </p>
                     <p onClick={() => {
+                        removeToken()
                         navigate('/')
                     }}
                     className=' hover:text-orange-400'>

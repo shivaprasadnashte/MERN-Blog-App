@@ -1,29 +1,42 @@
 import React from 'react'
 import Navbar from './Navbar'
+import Comments from './Comments';
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
-// import {useloction} from 'react-router-dom'
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link} from 'react-router-dom';
 import Footer from './Footer';
 import axios from 'axios';
-// import { use } from '../../../server/login';
+// import Link from 'react-router-dom';
 import { getToken } from '../session';
 
 function BlogPage() {
+  const [comment, setComment] = React.useState('')
   const token = getToken()
   const location = useLocation()
   const data = location.state
-  const id = data._id
-  const deleteBlog = async () => {
+  const blogId = data._id
+  const userId = token.userId
+  const username = token.name
 
-    await axios.delete(`http://localhost:5000/blog/${id}`)
+  const deleteBlog = async () => {
+    await axios.delete(`http://localhost:5000/blog/${blogid}`)
     alert('are you sure you want to delete this blog')
     alert('Blog Deleted')
     window.location = '/home'
   }
 
+  const postComment = async () => {
+    await axios.post('http://localhost:5000/comment/comment', {
+      blogId,
+      userId,
+      username,
+      comment
+    })
+   window.location.reload()
+
+  }
 
   return (
     <>
@@ -65,39 +78,17 @@ function BlogPage() {
             <div className=' border-2 w-full border-gray-200'>
               <textarea
                 className=' p-2  w-full focus:outline-none h-20'
-                placeholder='What do you think ?....'></textarea>
+                placeholder='What do you think ?....'
+                value={comment}
+                onChange={(e) => {
+                  setComment(e.target.value)
+                }}></textarea>
             </div>
-            <button className=' ml-2 bg-blue-700 px-4 h-10 text-white'>Post</button>
+            <button className=' ml-2 bg-blue-700 px-4 h-10 text-white' onClick={postComment}>Post</button>
           </div>
         </div>
-
-
-        <div className=' flex flex-col bg-gray-200 w-full py-1 gap-1 px-3'>
-          <div className=' flex justify-between '>
-            <div className=' flex gap-2'>
-              <span className=' font-bold'>siddhi</span>
-              <p className=' text-gray-400'>Tue May 27 2023</p>
-            </div>
-            <MdDelete className=' text-xl mt-2' />
-          </div>
-          <div>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis maiores ratione plac</p>
-          </div>
-        </div>
-
-
-        <div className=' flex flex-col bg-gray-200 w-full py-1 gap-1 px-3'>
-          <div className=' flex justify-between '>
-            <div className=' flex gap-2'>
-              <span className=' font-bold'>siddhi</span>
-              <p className=' text-gray-400'>Tue May 27 2023</p>
-            </div>
-            <MdDelete className=' text-xl mt-2' />
-          </div>
-          <div>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis maiores ratione plac</p>
-          </div>
-        </div>
+        <Link to='/comments' state={data}></Link>
+        <Comments />
       </div>
       <Footer />
     </>

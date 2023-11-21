@@ -68,21 +68,21 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide a userId'],
         trim: true,
-        maxlength: [100, 'userId cannot be more than 100 characters']
+       
     },
     username: {
         type: String,
         required: [true, 'Please provide a username'],
         trim: true,
-        maxlength: [100, 'username cannot be more than 100 characters']
+       
     },
     blogId: {
         type: String,
         required: [true, 'Please provide a blogId'],
         trim: true,
-        maxlength: [100, 'blogId cannot be more than 100 characters']
+      
     },
-    body: {
+    comment: {
         type: String,
         required: [true, 'Please provide a body'],
         trim: true,

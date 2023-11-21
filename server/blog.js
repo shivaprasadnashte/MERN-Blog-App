@@ -1,6 +1,6 @@
 const express = require("express");
 const blogSchema = require("./module/module");
-const userSchema = require("./module/module");
+// const userSchema = require("./module/module");
 const blogRouter = express.Router();
 
 blogRouter.route("/").post(async (req, res) => {

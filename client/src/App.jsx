@@ -6,6 +6,7 @@ import About from './components/About'
 import Contact from './components/Contact'
  import CreatBlog from './components/CreatBlog'
  import Blogpage from './components/BlogPage'
+ import Comments from './components/Comments'
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/creatblog" element={<CreatBlog />} />
           <Route path="/blogpage" element={<Blogpage />} />
+          <Route path="/comments" element={<Comments />} />
         </Routes>
 
 

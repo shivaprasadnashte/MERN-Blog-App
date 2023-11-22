@@ -11,24 +11,24 @@ function Navbar() {
                 <div className=' flex gap-3 sm:gap-20 p-3 '>
                     <p onClick={() => {
                         navigate('/home')
-                    }} className=' hover:text-orange-400' >HOME</p>
+                    }} className=' hover:text-orange-400 hover:cursor-pointer' >HOME</p>
                     <p onClick={() => {
                         navigate('/about')
                     }}
-                    className=' hover:text-orange-400'>
+                    className=' hover:text-orange-400 hover:cursor-pointer'>
                         ABOUT
                     </p>
                     <p onClick={() => {
                         navigate('/contact')
                     }}
-                    className=' hover:text-orange-400'>
+                    className=' hover:text-orange-400 hover:cursor-pointer'>
                         CONTACT
                     </p>
                     <p onClick={() => {
                         removeToken()
                         navigate('/')
                     }}
-                    className=' hover:text-orange-400'>
+                    className=' hover:text-orange-400 hover:cursor-pointer'>
                         LOGOUT
                     </p>
                 </div>

@@ -4,11 +4,9 @@ import Comments from './Comments';
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
-import { useEffect } from 'react';
-import { useLocation, Link} from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import Footer from './Footer';
 import axios from 'axios';
-// import Link from 'react-router-dom';
 import { getToken } from '../session';
 
 function BlogPage() {
@@ -34,7 +32,7 @@ function BlogPage() {
       username,
       comment
     })
-   window.location.reload()
+    window.location.reload()
 
   }
 

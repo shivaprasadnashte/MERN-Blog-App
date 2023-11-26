@@ -15,8 +15,7 @@ function BlogCard() {
             ((err) => {
                 console.log(err)
             })
-    }
-        , [])
+    },[])
 
     const navigate = useNavigate()
     return (
@@ -37,11 +36,11 @@ function BlogCard() {
                         </div>
                         <div className="card-actions">
                             <Link to={`/blogpage`} state={item} ><button className="btn btn-primary bg-orange-600 hover:bg-orange-700">Read More</button>
-                        </Link>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            </div >)): <h1>loading</h1>
-}
+                </div >)) : <h1>loading</h1>
+            }
 
         </>
     )

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { MdDelete } from "react-icons/md";
-import { FaUserAlt } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { getToken } from '../session';
@@ -12,7 +11,6 @@ function Comments() {
   const data = location.state
   const blogid = data._id
   const [comment, setComment] = React.useState([])
-  // const [commentId, setCommentId] = React.useState('')
   const deleteComment = async (commentId) => {
     await axios.delete(`http://localhost:5000/comment/comment/${commentId}`)
     window.location.reload()

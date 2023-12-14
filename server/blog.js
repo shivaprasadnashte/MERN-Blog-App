@@ -9,7 +9,7 @@ blogRouter.route("/").post(async (req, res) => {
     category: req.body.category,
     body: req.body.body,
     author: req.body.author,
-    userId:req.body.userId,
+    userId: req.body.userId,
   });
   const data = await blog.save();
   return res.status(201).json(data);
@@ -30,7 +30,6 @@ blogRouter.route("/:id").delete((req, res) => {
   blogSchema.Blog.findByIdAndDelete(req.params.id).then((blog) => {
     res.json(blog);
   });
-}
-);
+});
 
 module.exports = blogRouter;

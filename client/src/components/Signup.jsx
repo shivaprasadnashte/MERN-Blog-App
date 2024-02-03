@@ -4,14 +4,14 @@ import axios from 'axios'
 
 function Signup() {
     const navigate = useNavigate()
-    const [name, setName] = React.useState(' ')
-    const [username, setUsername] = React.useState(' ')
-    const [password, setPassward] = React.useState(' ')
-
+    const [name, setName] = React.useState('')
+    const [username, setUsername] = React.useState('')
+    const [password, setPassward] = React.useState('')
+    const URL =import.meta.env.VITE_PUBLIC_BACKEND_URL
     const handleSignup = async () => {
         const data = { name, username, password }
-        await axios.post('http://localhost:5000/signup', data)
-            .then(async (res) => {
+        await axios.post(`${URL}/signup`, data)
+            .then(async () => {
                 setName(''),
                     setUsername(''),
                     setPassward(''),

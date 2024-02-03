@@ -8,10 +8,10 @@ function Login() {
     const navigate = useNavigate()
     const [username, setUsername] = React.useState('')
     const [password, setPassward] = React.useState('')
-
+    const URL =import.meta.env.VITE_PUBLIC_BACKEND_URL
     const handleLogin = async () => {
         const data = { username, password }
-        await axios.post('http://localhost:5000/login', data)
+        await axios.post(`${URL}/login`, data)
            .then( async(res) => {
             setToken(res.data)
             // console.log(res.data)

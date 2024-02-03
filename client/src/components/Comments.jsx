@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react'
-import { MdDelete } from "react-icons/md";  
+import { MdDelete } from "react-icons/md";
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { getToken } from '../session';
-import { useNavigate } from 'react-router-dom';
 function Comments() {
-  const navigate = useNavigate()
   const token = getToken()
   const location = useLocation()
   const data = location.state
   const blogid = data._id
   const [comment, setComment] = React.useState([])
+  const URL = import.meta.env.VITE_PUBLIC_BACKEND_URL
   const deleteComment = async (commentId) => {
-    await axios.delete(`http://localhost:5000/comment/comment/${commentId}`)
+    await axios.delete(`${URL}comment/comment/${commentId}`)
     window.location.reload()
 
   }
   const getComment = async () => {
-    axios.get(`http://localhost:5000/comment/comment/${blogid}`)
+    axios.get(`${URL}/comment/comment/${blogid}`)
       .then((res) => {
         setComment(res.data)
       })
@@ -28,6 +27,7 @@ function Comments() {
   useEffect(() => {
     getComment()
   }
+    // eslint-disable-next-line 
     , [])
 
 

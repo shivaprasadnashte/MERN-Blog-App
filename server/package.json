@@ -4,7 +4,9 @@
   "description": "backend of blog app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev":"nodemon index.js",
+    "build":"npm i",
+    "start":"node index.js"
   },
   "author": "shivaprasad nashte",
   "license": "ISC",

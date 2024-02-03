@@ -17,16 +17,16 @@ function BlogPage() {
   const blogId = data._id
   const userId = token.userId
   const username = token.name
-
+  const URL = import.meta.env.VITE_PUBLIC_BACKEND_URL
   const deleteBlog = async () => {
-    await axios.delete(`http://localhost:5000/blog/${blogid}`)
+    await axios.delete(`${URL}/blog/${blogId}`)
     alert('are you sure you want to delete this blog')
     alert('Blog Deleted')
     window.location = '/home'
   }
 
   const postComment = async () => {
-    await axios.post('http://localhost:5000/comment/comment', {
+    await axios.post(`${URL}/comment/comment`, {
       blogId,
       userId,
       username,

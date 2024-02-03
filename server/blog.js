@@ -11,7 +11,7 @@ blogRouter.route("/").post(async (req, res) => {
     author: req.body.author,
     userId: req.body.userId,
   });
-  const data = await blog.save();
+  const data = await blog.save(); 
   return res.status(201).json(data);
 });
 blogRouter.route("/blogbycategory").get((req, res) => {

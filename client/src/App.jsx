@@ -1,13 +1,12 @@
-import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import About from './components/About'
+import Blogpage from './components/BlogPage'
+import Comments from './components/Comments'
+import Contact from './components/Contact'
+import CreatBlog from './components/CreatBlog'
+import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import Home from './components/Home'
-import About from './components/About'
-import Contact from './components/Contact'
- import CreatBlog from './components/CreatBlog'
- import Blogpage from './components/BlogPage'
- import Comments from './components/Comments'
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
@@ -26,7 +25,7 @@ function App() {
         </Routes>
 
 
-    </BrowserRouter>
+    </BrowserRouter>  
       
      
     </>

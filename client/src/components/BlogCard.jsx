@@ -1,23 +1,22 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+
 function BlogCard() {
     const [blog, setBlog] = React.useState([])
-
+    const URL = import.meta.env.VITE_PUBLIC_BACKEND_URL
     React.useEffect(() => {
-        axios.get('http://localhost:5000/blog')
+        axios.get(`${URL}/blog`)
             .then((res) => {
                 setBlog(res.data)
                 console.log(res.data.length)
             })
-            .catch
-            ((err) => {
+            .catch((err) => {
                 console.log(err)
             })
-    },[])
+        // eslint-disable-next-line 
+    }, [])
 
-    const navigate = useNavigate()
     return (
         <>
             {blog[0] ? blog.map((item) => (
